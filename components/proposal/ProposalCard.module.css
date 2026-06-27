@@ -1,0 +1,88 @@
+.card{
+    background: var(--bg-secondary);
+    border:1px solid var(--border-color);
+    border-radius:16px;
+    padding:24px;
+    transition:.25s;
+}
+
+.card:hover{
+    border-color:var(--accent-primary);
+    transform:translateY(-3px);
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:18px;
+}
+
+.header h3{
+    margin:0 0 6px;
+    font-size:1.15rem;
+}
+
+.header p{
+    color:var(--text-secondary);
+    font-size:.9rem;
+}
+
+.status{
+    padding:6px 14px;
+    border-radius:999px;
+    font-size:.8rem;
+    font-weight:600;
+}
+
+.pending{
+    background:#f59e0b22;
+    color:#fbbf24;
+}
+
+.accepted{
+    background:#22c55e22;
+    color:#4ade80;
+}
+
+.rejected{
+    background:#ef444422;
+    color:#f87171;
+}
+
+.coverLetter{
+    color:var(--text-secondary);
+    line-height:1.7;
+    margin-bottom:22px;
+}
+
+.footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+.bid,
+.date{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:var(--text-primary);
+}
+
+.viewBtn{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    color:var(--accent-primary);
+    font-weight:600;
+
+    text-decoration:none;
+}
+
+.viewBtn:hover{
+    text-decoration:underline;
+}
