@@ -14,7 +14,7 @@ const Topbar = () => {
    
     navigate("/messages");
   }
-  console.log(user)
+  //console.log(user)
   return (
     <header className={styles.topbar}>
 

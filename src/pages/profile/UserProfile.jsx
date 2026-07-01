@@ -1,5 +1,6 @@
 import styles from "./Profile.module.css";
-
+import { getUserReviews } from "../../services/reviewService";
+import ReviewCard from "../../components/review/ReviewCard";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -22,6 +23,8 @@ import {
 const UserProfile = () => {
 
   const { id } = useParams();
+ 
+ const [reviews, setReviews] = useState([]);
 
   const [user, setUser] = useState(null);
 
@@ -35,9 +38,17 @@ const UserProfile = () => {
 
         setUser(data.user);
 
+        //const userData = await getUserById(id);
+
+       //setProfile(userData.user);
+
+      const reviewData = await getUserReviews(id);
+
+       setReviews(reviewData.reviews);
+
       } catch (err) {
 
-        console.log(err);
+        //console.log(err);
 
       }
 
@@ -215,7 +226,40 @@ const UserProfile = () => {
 
           </div>
 
-          
+          <div className="card">
+
+    <h3>
+
+        Reviews ({reviews.length})
+
+    </h3>
+
+    {reviews.length === 0 ? (
+
+        <p>
+
+            No reviews yet.
+
+        </p>
+
+    ) : (
+
+        <div className={styles.reviewList}>
+
+            {reviews.map(review => (
+
+                <ReviewCard
+                    key={review._id}
+                    review={review}
+                />
+
+            ))}
+
+        </div>
+
+    )}
+
+</div>
 
         </div>
 

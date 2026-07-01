@@ -72,17 +72,79 @@
     color:var(--text-primary);
 }
 
-.viewBtn{
+.actions{
+    margin-top:20px;
+    display:flex;
+    justify-content:flex-end;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+/* Shared Button Styles */
+
+.viewBtn,
+.editBtn,
+.acceptBtn,
+.deleteBtn{
     display:flex;
     align-items:center;
-    gap:8px;
+    justify-content:center;
+    gap:6px;
 
-    color:var(--accent-primary);
+    padding:10px 18px;
+
+    border:none;
+    border-radius:10px;
+
+    font-size:14px;
     font-weight:600;
 
+    cursor:pointer;
     text-decoration:none;
+
+    transition:0.2s ease;
+}
+
+/* View Project / View Developer */
+
+.viewBtn{
+    background:var(--primary);
+    color:white;
 }
 
 .viewBtn:hover{
-    text-decoration:underline;
+    opacity:0.9;
+}
+
+/* Update */
+
+.editBtn{
+    background:#f3f4f6;
+    color:#111827;
+}
+
+.editBtn:hover{
+    background:#e5e7eb;
+}
+
+/* Accept */
+
+.acceptBtn{
+    background:#16a34a;
+    color:white;
+}
+
+.acceptBtn:hover{
+    background:#15803d;
+}
+
+/* Reject / Withdraw */
+
+.deleteBtn{
+    background:#dc2626;
+    color:white;
+}
+
+.deleteBtn:hover{
+    background:#b91c1c;
 }

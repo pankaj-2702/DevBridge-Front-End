@@ -149,7 +149,7 @@ const handleSubmit = async (e) => {
             err.response?.data?.msg ||
             "Failed"
         );
-        console.log(err);
+        //console.log(err);
 
   } finally {
 

@@ -33,8 +33,8 @@ const handleSubmit = async (e) =>{
     try {
         const data = await register(formData);
 
-        console.log("Registration Successful");
-        console.log(data);
+        //console.log("Registration Successful");
+        //console.log(data);
         login(data)
         navigate("/dashboard");
         // Later:

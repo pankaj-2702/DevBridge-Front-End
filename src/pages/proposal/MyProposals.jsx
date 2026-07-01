@@ -1,8 +1,7 @@
 import styles from "./MyProposals.module.css";
 
+import { withdrawProposal, getMyProposals } from "../../services/proposalService";
 import { useEffect, useState } from "react";
-
-import { getMyProposals } from "../../src/services/proposalService";
 
 import ProposalCard from "../../components/proposal/ProposalCard";
 
@@ -50,6 +49,25 @@ const MyProposals = () => {
 
   }
 
+   const handleWithdraw = async (proposalId) => {
+      const confirmDelete = window.confirm(
+        "Are you sure you want to Withdraw this proposal?"
+      );
+    
+      if (!confirmDelete) return;
+    
+      try {
+        await withdrawProposal(proposalId);
+        //navigate("/proposals");
+        setProposals(prev =>
+      prev.filter(proposal => proposal._id !== proposalId)
+    );
+      } catch (err) {
+        //console.log(err);
+      }
+    };
+
+
   return (
 
     <div className={styles.container}>
@@ -93,6 +111,8 @@ const MyProposals = () => {
             <ProposalCard
               key={proposal._id}
               proposal={proposal}
+              onWithdraw={handleWithdraw}
+              mode='developer'
             />
 
           ))}

@@ -10,8 +10,16 @@ import Profile from "./pages/profile/Profile";
 import EditProfile from "./pages/profile/EditProfile";
 import UserProfile from "./pages/profile/UserProfile";
 import CreateProject from "./pages/project/CreateProject";
-import SubmitProposal from "../pages/proposal/SubmitProposal";
-import MyProposals from "../pages/proposal/MyProposals";
+import SubmitProposal from "./pages/proposal/SubmitProposal";
+import MyProposals from "./pages/proposal/MyProposals";
+import EditProject from "./pages/project/EditProject";
+import EditProposal from "./pages/proposal/EditProposal";
+import MyProjects from "./pages/project/MyProjects";
+import ProjectProposals from "./pages/proposal/ProjectProposals";
+import Contracts from "./pages/contract/Contracts";
+import ContractDetails from "./pages/contract/ContractDetails";
+import ContractChat from "./pages/contract/ContractChat";
+import CreateReview from "./pages/review/CreateReview";
 function App() {
    return (
         <Routes>
@@ -25,7 +33,96 @@ function App() {
             </Layout>
         </ProtectedRoute>
     }
-/>
+/>   
+
+             
+             <Route
+    path="/contracts/:id/review"
+    element={
+    <ProtectedRoute> 
+        <Layout> 
+      <CreateReview />
+      </Layout>
+    </ProtectedRoute>  
+    }
+     />
+
+                  <Route
+            path="/contracts/:id/chat"
+         element={
+          <ProtectedRoute>
+            <Layout>
+                <ContractChat />
+            </Layout>
+        </ProtectedRoute>
+          }
+            />
+                   
+                       <Route
+                  path="/contracts/:id"
+                    element={
+                    <ProtectedRoute>
+                <Layout>
+              <ContractDetails />
+                </Layout>
+                    </ProtectedRoute>
+               }
+                />
+
+                      <Route
+                  path="/contracts"
+                    element={
+                    <ProtectedRoute>
+                <Layout>
+              <Contracts />
+                </Layout>
+                    </ProtectedRoute>
+               }
+                />
+
+                     <Route
+                  path="/projects/:id/proposals"
+                    element={
+                    <ProtectedRoute>
+                <Layout>
+              <ProjectProposals />
+                </Layout>
+                    </ProtectedRoute>
+               }
+                />
+
+
+                     <Route
+                  path="/my-projects"
+                    element={
+                    <ProtectedRoute>
+                <Layout>
+              <MyProjects />
+                </Layout>
+                    </ProtectedRoute>
+               }
+                />
+                     <Route
+                  path="/proposals/:id/edit"
+                    element={
+                    <ProtectedRoute>
+                <Layout>
+              <EditProposal />
+                </Layout>
+                    </ProtectedRoute>
+               }
+                />
+               
+                 <Route
+                  path="/projects/:id/edit"
+                    element={
+                    <ProtectedRoute>
+                <Layout>
+              <EditProject />
+                </Layout>
+                    </ProtectedRoute>
+               }
+                /> 
 
                 <Route
                   path="/projects/:id/proposal"

@@ -26,9 +26,9 @@ export const uploadPhoto = async (photo) => {
 
 
 export const getUserById = async (id) => {
-    console.log(id)
+    //console.log(id)
     const response = await api.get(`/users/${id}`);
-    console.log(response.data.user)
+    //console.log(response.data.user)
     return response.data;
 
 }

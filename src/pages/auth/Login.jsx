@@ -36,8 +36,8 @@ const handleSubmit = async (e) =>{
     try {
         const data = await loginAPI(formData);
 
-        console.log("Login Successful");
-        console.log(data);
+        //console.log("Login Successful");
+        //console.log(data);
         login(data);
         navigate("/dashboard");
         // Later:

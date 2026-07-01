@@ -3,7 +3,7 @@ import styles from "./ProjectDetails.module.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
-import { getProjectById } from "../../services/projectService";
+import { getProjectById , deleteProject } from "../../services/projectService";
 
 import {
   ArrowLeft,
@@ -37,7 +37,7 @@ const ProjectDetails = () => {
 
       } catch (err) {
 
-        console.log(err);
+        //console.log(err);
 
       }
 
@@ -47,7 +47,9 @@ const ProjectDetails = () => {
 
   }, [id]);
 
-  
+ const isOwner = user?._id=== project?.clientId?._id;
+ 
+ 
 const handleSubmit = () =>{
    navigate(`/projects/${id}/proposal`)
 }
@@ -58,7 +60,34 @@ const handleSubmit = () =>{
     return <h2>Loading...</h2>;
 
   }
-  console.log(project.clientId);
+
+  //console.log("Is Owner : "+ isOwner)
+ //console.log("MY name : "+user._id + " and owner name : "+project.clientId?._id )
+
+  const handleEdit = () => {
+  navigate(`/projects/${id}/edit`);
+};
+
+const handleDelete = async () => {
+  const confirmDelete = window.confirm(
+    "Are you sure you want to delete this project?"
+  );
+
+  if (!confirmDelete) return;
+
+  try {
+    await deleteProject(id);
+    navigate("/my-projects");
+  } catch (err) {
+    //console.log(err);
+  }
+};
+
+const handleViewProposals = () =>{
+   navigate(`/projects/${id}/proposals`)
+   console.log(id)
+}
+  //console.log(project.clientId);
 
   return (
 
@@ -274,16 +303,48 @@ const handleSubmit = () =>{
 
       </div>
 
-      {/* Bottom Button */}
+      <div className={styles.actionButtons}>
 
-      { user?.role=='developer' &&
-        <button className="btn-primary"
-        onClick={handleSubmit}
-        >
-       <Send size={18} style={{ marginRight: "8px" }}/> 
-        Submit Proposal
+  {/* Developer */}
 
-      </button>}
+  {user?.role === "developer" && !isOwner && (
+    <button
+      className="btn-primary"
+      onClick={handleSubmit}
+    >
+      <Send size={18} />
+      Submit Proposal
+    </button>
+  )}
+
+  {/* Owner */}
+
+  {isOwner && (
+    <>
+      <button
+        className="btn-secondary"
+        onClick={handleEdit}
+      >
+        Edit Project
+      </button>
+
+      <button
+        className={styles.viewProposalBtn}
+         onClick={handleViewProposals}
+      >
+        {`View Proposals(${project.proposalCount})`}
+      </button>
+
+      <button
+        className={styles.deleteBtn}
+        onClick={handleDelete}
+      >
+        Delete Project
+      </button>
+    </>
+  )}
+
+</div>
 
     </div>
 

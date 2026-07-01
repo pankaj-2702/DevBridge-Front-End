@@ -51,12 +51,7 @@ const navItems = [
     icon: FileText,
     roles: ["developer"],
   },
-  {
-    label: "Messages",
-    path: "/messages",
-    icon: MessageSquare,
-    roles: ["client", "developer"],
-  },
+  
   {
     label: "Contracts",
     path: "/contracts",
@@ -73,7 +68,7 @@ const Sidebar = () => {
     logout()
     navigate('/login')
   }
-  console.log(user)
+  //console.log(user)
   return (
     <aside className={styles.sidebar}>
 

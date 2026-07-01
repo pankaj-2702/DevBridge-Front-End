@@ -1,18 +1,18 @@
 import styles from "./SubmitProposal.module.css";
 
-import { useState } from "react";
+import { useState ,useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { IndianRupee, FileText, Lightbulb, Send } from "lucide-react";
 
-import { submitProposal } from "../../src/services/proposalService";
+import { editProposal , getProposalById } from "../../services/proposalService";
 
-const SubmitProposal = () => {
+const EditProposal = () => {
 
   const navigate = useNavigate();
 
   const { id } = useParams();
- console.log("Id ins submit fun : " +id)
+ //console.log("Id ins submit fun : " +id)
   const [saving, setSaving] = useState(false);
 
   const [error, setError] = useState("");
@@ -21,6 +21,24 @@ const SubmitProposal = () => {
     bidAmount: "",
     coverLetter: ""
   });
+
+  useEffect(() => {
+  
+      const fetchProposal = async () => {
+  
+          const data = await getProposalById(id);
+          
+          console.log(data.proposal)
+          setFormData({
+              bidAmount: data.proposal.bidAmount,
+              coverLetter: data.proposal.coverLetter
+          });
+  
+      };
+  
+      fetchProposal();
+  
+  }, [id]);
 
   const handleChange = (e) => {
 
@@ -40,8 +58,8 @@ const SubmitProposal = () => {
     try {
 
       setSaving(true);
-     console.log(formData)
-      await submitProposal(id, {
+     //console.log(formData)
+      await editProposal(id, {
         ...formData,
         bidAmount: Number(formData.bidAmount)
       });
@@ -202,7 +220,7 @@ const SubmitProposal = () => {
 
               <Send size={18} />
 
-              {saving ? "Submitting..." : "Submit Proposal"}
+              {saving ? "Editing..." : "Edit Proposal"}
 
             </button>
 
@@ -218,4 +236,4 @@ const SubmitProposal = () => {
 
 };
 
-export default SubmitProposal;
+export default EditProposal;

@@ -184,6 +184,9 @@ small {
   letter-spacing: 0.5px;
 }
 
+.badge-active     { background: rgba(34,197,94,0.15);  color: var(--accent-success); }
+.badge-cancelled  { background: rgba(239,68,68,0.15);  color: var(--accent-danger); }
+
 .badge-open        { background: rgba(34,197,94,0.15);   color: var(--accent-success); }
 .badge-in_progress { background: rgba(245,158,11,0.15);  color: var(--accent-warning); }
 .badge-completed   { background: rgba(108,99,255,0.15);  color: var(--accent-primary); }
@@ -229,7 +232,7 @@ small {
   font-weight: var(--font-medium);
   cursor: pointer;
   transition: background var(--transition-fast);
-  width: 100%;
+  /* width: 100%; */
 }
 
 .btn-primary:hover {
