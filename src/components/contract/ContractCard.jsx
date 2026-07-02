@@ -44,9 +44,12 @@ const ContractCard = ({ contract }) => {
               : "Client"}
 
           </p>
-
+       
+          <Link 
+           to={`/users/${otherPerson._id}`}
+          >
           <div className={styles.user}>
-
+         
             {otherPerson.profilePhoto ? (
 
               <img
@@ -66,8 +69,9 @@ const ContractCard = ({ contract }) => {
             <span>{otherPerson.name}</span>
 
           </div>
-
+          </Link>
         </div>
+        
 
         <span className={`badge ${statusClass[contract.status]}`}>
           {contract.status}

@@ -109,7 +109,7 @@
 
 .viewBtn{
     background:var(--primary);
-    color:white;
+    color : var(--text-primary);
 }
 
 .viewBtn:hover{

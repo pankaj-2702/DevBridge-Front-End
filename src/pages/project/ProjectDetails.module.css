@@ -112,7 +112,7 @@
 .activeTab {
   background: rgba(108,99,255,.15);
 
-  color: white;
+  color:var(--text-primary);
 
   border: none;
 

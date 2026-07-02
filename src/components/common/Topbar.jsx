@@ -10,9 +10,10 @@ const Topbar = () => {
    
     navigate("/profile");
   }
-   const visitMessages = ()=>{
-   
-    navigate("/messages");
+   const visitNotifications = ()=>{
+     
+    window.alert("Notifications\n Coming in DevBridge v1.1\nYou'll receive updates about\n• Contracts\n• Applications\n• Reviews");
+    //navigate("/messages");
   }
   //console.log(user)
   return (
@@ -39,7 +40,7 @@ const Topbar = () => {
 
         <button
          className={styles.iconBtn}
-         onClick={visitMessages}
+         onClick={visitNotifications}
          >
           <Bell size={20} />
         </button>

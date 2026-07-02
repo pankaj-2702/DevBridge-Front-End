@@ -20,6 +20,7 @@ import Contracts from "./pages/contract/Contracts";
 import ContractDetails from "./pages/contract/ContractDetails";
 import ContractChat from "./pages/contract/ContractChat";
 import CreateReview from "./pages/review/CreateReview";
+import Settings from "./pages/settings/Settings";
 function App() {
    return (
         <Routes>
@@ -34,6 +35,18 @@ function App() {
         </ProtectedRoute>
     }
 />   
+           
+                <Route
+    path="/settings"
+    element={
+    <ProtectedRoute> 
+        <Layout> 
+      <Settings />
+      </Layout>
+    </ProtectedRoute>  
+    }
+     />
+  
 
              
              <Route

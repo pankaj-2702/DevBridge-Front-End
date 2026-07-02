@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 
 import { getMe } from "../../services/userService";
 
+import { getUserReviews } from "../../services/reviewService";
+
 import {
   User,
   Mail,
@@ -20,7 +22,8 @@ import {
 } from "lucide-react";
 
 const Profile = () => {
-
+  
+  const [reviews, setReviews] = useState([]);
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -32,6 +35,10 @@ const Profile = () => {
         const data = await getMe();
 
         setUser(data.data);
+
+       const reviewData = await getUserReviews(id);
+        
+        setReviews(reviewData.reviews);
 
       } catch (err) {
 
@@ -234,6 +241,41 @@ const Profile = () => {
                       </div>
           
                     </div>
+
+                    <div className="card">
+
+    <h3>
+
+        Reviews ({reviews.length})
+
+    </h3>
+
+    {reviews.length === 0 ? (
+
+        <p>
+
+            No reviews yet.
+
+        </p>
+
+    ) : (
+
+        <div className={styles.reviewList}>
+
+            {reviews.map(review => (
+
+                <ReviewCard
+                    key={review._id}
+                    review={review}
+                />
+
+            ))}
+
+        </div>
+
+    )}
+
+</div>
 
          
         </div>
