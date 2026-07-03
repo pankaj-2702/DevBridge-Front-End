@@ -1,4 +1,4 @@
-import Skeleton from "../skeleton/Skeleton.jsx"; 
+import Skeleton from "./Skeleton.jsx"; 
 import styles from "./UniversalPageSkeleton.module.css";
 
 const UniversalPageSkeleton = () => {
