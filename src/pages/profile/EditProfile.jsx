@@ -3,6 +3,7 @@ import styles from "./EditProfile.module.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth"
+import UniversalPageSkeleton from "../../components/Skeleton/UniversalPageSkeleton"
 import { getMe, updateMe, uploadPhoto } from "../../services/userService";
 
 
@@ -61,6 +62,8 @@ const [photo, setPhoto] = useState(null);
     fetchUser();
 
   }, []);
+
+  if (loading) return <UniversalPageSkeleton />;
 
   const handleChange = (e) => {
 

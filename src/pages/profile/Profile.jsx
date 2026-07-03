@@ -2,11 +2,13 @@ import styles from "./Profile.module.css";
 
 import { useEffect, useState } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { getMe } from "../../services/userService";
 
 import { getUserReviews } from "../../services/reviewService";
+
+import ReviewCard from '../../components/review/ReviewCard'
 
 import {
   User,
@@ -20,12 +22,14 @@ import {
   Star,
   MessageSquare
 } from "lucide-react";
+import UniversalPageSkeleton from "../../components/Skeleton/UniversalPageSkeleton";
 
 const Profile = () => {
   
   const [reviews, setReviews] = useState([]);
   const [user, setUser] = useState(null);
-
+  
+ 
   useEffect(() => {
 
     const fetchProfile = async () => {
@@ -36,7 +40,7 @@ const Profile = () => {
 
         setUser(data.data);
 
-       const reviewData = await getUserReviews(id);
+       const reviewData = await getUserReviews(data.data._id);
         
         setReviews(reviewData.reviews);
 
@@ -52,7 +56,7 @@ const Profile = () => {
 
   }, []);
 
-  if (!user) return <h2>Loading...</h2>;
+  if (!user) return <UniversalPageSkeleton />;
 
   return (
 

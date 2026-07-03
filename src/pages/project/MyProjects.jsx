@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import ProjectCard from '../../components/project/ProjectCard'
+import UniversalPageSkeleton from '../../components/Skeleton/UniversalPageSkeleton'
 import { getMyProjects } from '../../services/projectService'
 import styles from './Projects.module.css'
 
@@ -24,7 +25,7 @@ const MyProjects = () => {
     fetchProjects()
   }, [])
 
-  if (loading) return <div className={styles.center}>Loading projects...</div>
+  if (loading) return <UniversalPageSkeleton />
   if (error) return <div className={`${styles.center} error`}>{error}</div>
 
   return (

@@ -3,6 +3,7 @@ import styles from "./ProjectDetails.module.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import UniversalPageSkeleton from "../../components/Skeleton/UniversalPageSkeleton";
 import { getProjectById , deleteProject } from "../../services/projectService";
 
 import {
@@ -57,7 +58,7 @@ const handleSubmit = () =>{
 
   if (!project) {
 
-    return <h2>Loading...</h2>;
+    return <UniversalPageSkeleton />;
 
   }
 

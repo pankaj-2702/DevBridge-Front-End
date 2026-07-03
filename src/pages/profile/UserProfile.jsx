@@ -19,6 +19,7 @@ import {
   MessageSquare,
   Briefcase
 } from "lucide-react";
+import UniversalPageSkeleton from "../../components/Skeleton/UniversalPageSkeleton";
 
 const UserProfile = () => {
 
@@ -58,7 +59,7 @@ const UserProfile = () => {
 
   }, [id]);
 
-  if (!user) return <h2>Loading...</h2>;
+  if (!user) return <UniversalPageSkeleton />;
 
   return (
 

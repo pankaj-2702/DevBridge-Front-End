@@ -3,6 +3,7 @@ import MessageBubble from "../../components/contract/MessageBubble";
 import ChatHeader from "../../components/contract/ChatHeader";
 import MessageInput from '../../components/contract/ChatInput';
 import ContractSummary from "../../components/contract/ContractSummary";
+import UniversalPageSkeleton from "../../components/Skeleton/UniversalPageSkeleton";
 import { useParams } from "react-router-dom";
 import { getContractById } from "../../services/contractService";
 import { getMessages ,sendMessage } from "../../services/messageService";
@@ -58,6 +59,7 @@ useEffect(() => {
 
 }, [id]);
 
+  if (loading) return <UniversalPageSkeleton />;
 
 const handleSend = async () => {
 

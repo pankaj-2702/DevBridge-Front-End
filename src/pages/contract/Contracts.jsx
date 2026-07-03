@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { getAllContracts } from "../../services/contractService";
 
 import ContractCard from "../../components/contract/ContractCard";
+import UniversalPageSkeleton from "../../components/Skeleton/UniversalPageSkeleton";
 
 const Contracts = () => {
 
@@ -45,9 +46,7 @@ const Contracts = () => {
   }, []);
 
   if (loading) {
-
-    return <h2>Loading...</h2>;
-
+    return <UniversalPageSkeleton />;
   }
 
   return (

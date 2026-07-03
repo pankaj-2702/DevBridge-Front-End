@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import useAuth from "../../hooks/useAuth";
+import UniversalPageSkeleton from "../../components/Skeleton/UniversalPageSkeleton";
 import {
   getContractById,
   completeContract
@@ -54,7 +55,7 @@ const ContractDetails = () => {
 
   if (!contract) {
 
-    return <h2>Loading...</h2>;
+    return <UniversalPageSkeleton />;
 
   }
 

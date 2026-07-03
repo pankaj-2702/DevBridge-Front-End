@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { getProposals , acceptProposals } from "../../services/proposalService";
 
 import ProposalCard from "../../components/proposal/ProposalCard";
+import UniversalPageSkeleton from "../../components/Skeleton/UniversalPageSkeleton";
 import { useNavigate, useParams } from "react-router-dom";
 
 const ProjectProposals = () => {
@@ -49,9 +50,7 @@ const ProjectProposals = () => {
   }, [id]);
 
   if (loading) {
-
-    return <h2>Loading...</h2>;
-
+    return <UniversalPageSkeleton />;
   }
 
    const handleAccept = async (proposalId) => {

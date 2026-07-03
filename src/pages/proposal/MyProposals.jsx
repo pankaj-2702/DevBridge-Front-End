@@ -4,6 +4,7 @@ import { withdrawProposal, getMyProposals } from "../../services/proposalService
 import { useEffect, useState } from "react";
 
 import ProposalCard from "../../components/proposal/ProposalCard";
+import UniversalPageSkeleton from "../../components/Skeleton/UniversalPageSkeleton";
 
 const MyProposals = () => {
 
@@ -44,9 +45,7 @@ const MyProposals = () => {
   }, []);
 
   if (loading) {
-
-    return <h2>Loading...</h2>;
-
+    return <UniversalPageSkeleton />;
   }
 
    const handleWithdraw = async (proposalId) => {

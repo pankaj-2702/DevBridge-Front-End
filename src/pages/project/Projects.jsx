@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import ProjectCard from '../../components/project/ProjectCard'
 import { getProjects } from '../../services/projectService'
 import styles from './Projects.module.css'
-
+import UniversalPageSkeleton from '../../components/Skeleton/UniversalPageSkeleton'
 const Projects = () => {
   const [projects, setProjects] = useState([])
   const [loading, setLoading] = useState(true)
@@ -24,7 +24,12 @@ const Projects = () => {
     fetchProjects()
   }, [])
 
-  if (loading) return <div className={styles.center}>Loading projects...</div>
+  if (loading){
+       return (
+  <UniversalPageSkeleton/>
+
+    );
+  } 
   if (error) return <div className={`${styles.center} error`}>{error}</div>
 
   return (
